@@ -1,0 +1,22 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sb
+df=pd.read_csv("Tips Dataset.csv")
+print(df[['size', 'tip', 'total_bill']].describe())
+plt.figure(figsize=(8, 5))
+sb.histplot(df['total_bill'], kde=True, color='skyblue')
+plt.title("Histogram of Total Bill with KDE")
+plt.xlabel("Total Bill")
+plt.ylabel("Frequency")
+plt.grid(True)
+plt.show()
+plt.figure(figsize=(8, 5))
+sb.scatterplot(data=df, x='total_bill', y='tip', hue='time')
+plt.title("Total Bill vs Tip by Time")
+plt.xlabel("Total Bill")
+plt.ylabel("Tip")
+plt.grid(True)
+plt.show()
+sb.pairplot(df, hue='gender', palette='husl')
+plt.suptitle("Pair Plot with Gender as Hue", y=1.02)
+plt.show()
